@@ -19,6 +19,13 @@ public:
 	}
 
 	//~World();
+	int getHeight() {
+		return height;
+	}
+
+	int getWidth() {
+		return width;
+	}
 
 	void nextTurn();
 	void drawWorld();

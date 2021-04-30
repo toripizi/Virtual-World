@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animal.cpp" />
+    <ClCompile Include="Animals.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="plant.cpp" />
     <ClCompile Include="Square.cpp" />

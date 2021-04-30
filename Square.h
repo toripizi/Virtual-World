@@ -1,23 +1,18 @@
 #pragma once
-
-#include <string>
+#include "organism.h"
 
 class Square
 {
 	unsigned char sign = ' ';
-	std::string name = "empty";
+
 public:
-	unsigned char getSign() {
+	Organism* organism = nullptr;
+	const unsigned char getSign() {
 		return sign;
 	}
-	std::string getName() {
-		return name;
+	void setSign(unsigned char newSign) {
+		sign = newSign;
 	}
-	void setSign(unsigned char newChar) {
-		sign = newChar;
-	}
-	void setName(std::string newName) {
-		name = newName;
-	}
+
 };
 

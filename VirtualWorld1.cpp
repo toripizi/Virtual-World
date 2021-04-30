@@ -1,9 +1,12 @@
 ﻿#include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include <time.h>
+
 #include "world.h"
 #include "organism.h"
 #include "Human.h"
+#include "Animals.cpp"
 
 using namespace std;
 
@@ -23,7 +26,10 @@ void goToxy(int x, int y)
 
 int main()
 {
+	srand((unsigned)time(NULL));
+
 	Human human(0, 0);
+	Wilk wilk;
 
 	world.drawWorld();
 	goToxy(0, 0);

@@ -2,29 +2,19 @@
 #include <conio.h>
 
 Human::Human(int X, int Y) {
-	changeXY(X, Y);
+	xX = X;
+	yY = Y;
 
+	name = "human";
+	sign = 'H';
 	strength = 5;
 	activity = 4;
 
-	getIn();
+	action();
 }
 Human::Human() {
 	strength = 5;
 	activity = 4;
-}
-
-void Human::getOut() {
-	world.tab[x][y].setName("empty");
-	world.tab[x][y].setSign(' ');
-}
-void Human::changeXY(int newX, int newY) {
-	x = newX;
-	y = newY;
-}
-void Human::getIn() {
-	world.tab[x][y].setName(name);
-	world.tab[x][y].setSign(sign);
 }
 
 void Human::control() {
@@ -55,9 +45,7 @@ void Human::control() {
 		break;
 	//ESC
 	case 122:
-		getOut();
-		changeXY(xX, yY);
-		getIn();
+		this->action();
 		world.drawWorld();
 		world.nextTurn();
 		break;
