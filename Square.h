@@ -13,5 +13,11 @@ public:
 	std::string getName() {
 		return name;
 	}
+	void setSign(unsigned char newChar) {
+		sign = newChar;
+	}
+	void setName(std::string newName) {
+		name = newName;
+	}
 };
 

@@ -19,3 +19,7 @@ void World::drawWorld() {
 void World::setGameOver() {
 	gameOver = true;
 }
+
+void World::nextTurn() {
+
+}

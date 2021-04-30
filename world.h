@@ -6,9 +6,10 @@ class World
 {
 	int height = 20;
 	int width = 20;
-	Square** tab;
 
 public:
+	Square** tab;
+
 	bool gameOver = false;
 	World(int H, int W) : height(H), width(W) {
 		tab = new Square *[H];
@@ -17,9 +18,9 @@ public:
 		}
 	}
 
-	/*~World();
+	//~World();
 
-	void nextTurn();*/
+	void nextTurn();
 	void drawWorld();
 	void setGameOver();
 };
