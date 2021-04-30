@@ -8,7 +8,7 @@ The game is based on turns.
 * Activity is deciding about which object is moving first in new turn. 
 * You can move one square on turn.
 
-##### Every object has:
+#### Every object has:
 * strength
 * activity
 * special skill
