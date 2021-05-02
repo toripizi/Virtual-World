@@ -110,13 +110,28 @@ public:
         if (size()){
             Node* temporary = first;
             Node* next = temporary->getNext();
+
             temporary->getOrganism()->move();
             temporary->getOrganism()->action();
-            while (temporary != last) {
-               
-                temporary = next;
-                next = temporary->getNext();
 
+            while (temporary != last) {
+                Node* temp = first;
+                while (true) {
+                    if (temp == temporary) {
+                        temporary = temporary->getNext();
+                        next = temporary->getNext();
+                        break;
+                    }
+                    else if (temp == next) {
+                        temporary = next;
+                        next = temporary->getNext();
+                        break;
+                    }
+                    else {
+                        temp = temp->getNext();
+                    }
+                }
+                
                 temporary->getOrganism()->move();
                 temporary->getOrganism()->action();
             }

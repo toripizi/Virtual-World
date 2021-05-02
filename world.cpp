@@ -14,7 +14,15 @@ World::World(int H, int W) : height(H), width(W) {
 	Owca* owca4 = new Owca;
 	Owca* owca5 = new Owca;
 	Owca* owca6 = new Owca;
+	Owca* owca7 = new Owca;
+	Owca* owca8 = new Owca;
+	Owca* owca9 = new Owca;
+	Owca* owca10 = new Owca;
 	Lis* lis = new Lis;
+	Lis* lis2 = new Lis;
+	Lis* lis3 = new Lis;
+	Lis* lis4 = new Lis;
+	Lis* lis5 = new Lis;
 	Zolw* zolw = new Zolw;
 	Wilk* wilk = new Wilk;
 
