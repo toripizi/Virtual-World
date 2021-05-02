@@ -7,6 +7,7 @@
 #include "organism.h"
 #include "Human.h"
 #include "Animals.cpp"
+#include "List.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ using namespace std;
 void goToxy(int x, int y)
 {
 	HANDLE hCon;
-	COORD dwPos;
+	COORD dwPos{};
 
 	dwPos.X = x;
 	dwPos.Y = y;
@@ -28,17 +29,23 @@ int main()
 {
 	srand((unsigned)time(NULL));
 
-	Human human(0, 0);
-	Wilk wilk;
+	Human* human = new Human;
 
 	world.drawWorld();
+	cout << endl << "CC - czlowiek" << endl;
+	cout << "WW - wilk" << endl;
+	cout << "OO - owca" << endl;
+	cout << "LL - lis" << endl;
+	cout << "ZZ - zolw" << endl;
 	goToxy(0, 0);
-	while (!world.gameOver) {
+	while (!world.getGameOver()) {
 		if (_kbhit())
 		{
-			human.control();
+			human->control();
 			goToxy(0, 0);
 		}
 	}
+
+
 	return 0;
 }

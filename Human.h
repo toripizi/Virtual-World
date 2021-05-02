@@ -4,9 +4,9 @@
 class Human :public Animal
 {
 public:
-	Human(int X, int Y);
 	Human();
-
+	~Human();
+	void move() override;
 	void control();
 
 };

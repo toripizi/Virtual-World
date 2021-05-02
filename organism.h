@@ -20,41 +20,22 @@ public:
 	virtual void action() = 0;
 	virtual void conflict() = 0;
 	virtual void display() = 0;
+	virtual void move() = 0;
 
-	void changeXY(int newX, int newY) {
-		x = newX;
-		y = newY;
-	}
+	void changeXY(int newX, int newY);
 
-	const int getX() {
-		return x;
-	}
-	void setX(int newX) {
-		x = newX;
-	}
-	const int getY() {
-		return y;
-	}
-	void setY(int newY) {
-		y = newY;
-	}
-	const int getStrength() {
-		return strength;
-	}
-	const int getActivity() {
-		return activity;
-	}
+	const int getX();
+	void setX(int newX);
 
-	void setName(std::string newName) {
-		name = newName;
-	}
-	void setSign(unsigned char newSign) {
-		sign = newSign;
-	}
-	const std::string getName() {
-		return name;
-	}
-	const unsigned char getSign() {
-		return sign;
-	}
+	const int getY();
+	void setY(int newY);
+	
+	const int getStrength();
+	const int getActivity();
+
+	void setName(std::string newName);
+	const std::string getName();
+
+	void setSign(unsigned char newSign);
+	const unsigned char getSign();
 };

@@ -1,20 +1,31 @@
 #include "Human.h"
 #include <conio.h>
 
-Human::Human(int X, int Y) {
-	xX = X;
-	yY = Y;
+Human::Human() {
+	do {
+		xX = rand() % (world.getWidth() - 1);
+		yY = rand() % (world.getHeight() - 1);
+	} while (world.tab[xX][yY].organism != nullptr);
+	
+	x = xX;
+	y = yY;
 
 	name = "human";
-	sign = 'H';
+	sign = 'C';
 	strength = 5;
 	activity = 4;
+	
+	world.tab[x][y].organism = this;
+	world.tab[x][y].setSign(this->getSign());
 
-	action();
+	world.organisms.PUSH(this);
 }
-Human::Human() {
-	strength = 5;
-	activity = 4;
+
+Human::~Human() {
+	std::cout << "asd";
+}
+
+void Human::move() {
 }
 
 void Human::control() {
@@ -45,12 +56,12 @@ void Human::control() {
 		break;
 	//ESC
 	case 122:
-		this->action();
-		world.drawWorld();
 		world.nextTurn();
+		world.drawWorld();
 		break;
 	case 27: //klawisze specjalne
-		world.gameOver = true;
+		world.setGameOver();
 		break;
 	}
 }
+

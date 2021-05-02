@@ -7,12 +7,7 @@ class Square
 
 public:
 	Organism* organism = nullptr;
-	const unsigned char getSign() {
-		return sign;
-	}
-	void setSign(unsigned char newSign) {
-		sign = newSign;
-	}
-
+	const unsigned char getSign();
+	void setSign(unsigned char newSign);
 };
 
