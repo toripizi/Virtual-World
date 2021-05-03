@@ -6,7 +6,8 @@ World::World(int H, int W) : height(H), width(W) {
 	const int numberOfOwca = 1;
 	const int numberOfLis = 1;
 	const int numberOfWilk = 1;
-	const int numberOfZolw = 50;
+	const int numberOfZolw = 1;
+	const int numberOfAntylopa = 50;
 
 	tab = new Square * [H];
 	for (int i = 0; i < H; i++) {
@@ -31,6 +32,11 @@ World::World(int H, int W) : height(H), width(W) {
 	Zolw* zolw[numberOfZolw]{};
 	for (int i = 0; i < numberOfZolw; i++) {
 		zolw[i] = new Zolw;
+	}
+
+	Antylopa* antylopa[numberOfAntylopa]{};
+	for (int i = 0; i < numberOfAntylopa; i++) {
+		antylopa[i] = new Antylopa;
 	}
 }
 

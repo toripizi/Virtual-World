@@ -113,3 +113,70 @@ public:
 		}
 	}
 };
+class Antylopa : public Animal {
+	int tab[2][24];
+public:
+	Antylopa() {
+		do {
+			xX = rand() % (world.getWidth() - 1);
+			yY = rand() % (world.getHeight() - 1);
+		} while (world.tab[xX][yY].organism != nullptr);
+
+		x = xX;
+		y = yY;
+
+		name = "antylopa";
+		sign = 'A';
+		strength = 4;
+		activity = 4;
+
+		world.tab[x][y].organism = this;
+		world.tab[x][y].setSign(this->getSign());
+
+		world.organisms.PUSH(this);
+	}
+	void checkField(int newX, int newY) {
+		if (newX >= 0 &&
+			newX < world.getWidth() &&
+			newY >= 0 &&
+			newY < world.getHeight())
+		{
+			tab[0][numberOfAvailableFields] = newX;
+			tab[1][numberOfAvailableFields] = newY;
+			numberOfAvailableFields++;
+		}
+	}
+	void move() {
+		numberOfAvailableFields = 0;
+		checkField(x - 2, y - 2);
+		checkField(x - 2, y - 1);
+		checkField(x - 2, y);
+		checkField(x - 2, y + 1);
+		checkField(x - 2, y + 2);
+		checkField(x - 1, y + 2);
+		checkField(x , y + 2);
+		checkField(x + 1, y + 2);
+		checkField(x + 2, y + 2);
+		checkField(x + 2, y + 1);
+		checkField(x + 2, y);
+		checkField(x + 2, y - 1);
+		checkField(x + 2, y - 2);
+		checkField(x + 1, y - 2);
+		checkField(x, y - 2);
+		checkField(x - 1, y - 2);
+		checkField(x - 1, y);
+		checkField(x - 1, y + 1);
+		checkField(x, y + 1);
+		checkField(x + 1, y + 1);
+		checkField(x + 1, y);
+		checkField(x + 1, y - 1);
+		checkField(x, y - 1);
+		checkField(x - 1, y - 1);
+
+		if (numberOfAvailableFields) {
+			int random = rand() % numberOfAvailableFields;
+			xX = tab[0][random];
+			yY = tab[1][random];
+		}
+	}
+};

@@ -32,11 +32,12 @@ int main()
 	Human* human = new Human;
 
 	world.drawWorld();
-	cout << endl << "CC - czlowiek" << endl;
-	cout << "WW - wilk" << endl;
-	cout << "OO - owca" << endl;
-	cout << "LL - lis" << endl;
-	cout << "ZZ - zolw" << endl;
+	cout << endl << "C - czlowiek" << endl;
+	cout << "W - wilk" << endl;
+	cout << "O - owca" << endl;
+	cout << "L - lis" << endl;
+	cout << "Z - zolw" << endl;
+	cout << "A - antylopa" << endl;
 	goToxy(0, 0);
 	while (!world.getGameOver()) {
 		if (_kbhit())
