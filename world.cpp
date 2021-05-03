@@ -7,25 +7,26 @@ World::World(int H, int W) : height(H), width(W) {
 	for (int i = 0; i < H; i++) {
 		tab[i] = new Square[W];
 	}
+	
+	Owca* owca[50]{};
+	for(int i = 0; i < 50; i++) {
+		owca[i] = new Owca;
+	}
 
-	Owca* owca = new Owca;
-	Owca* owca2 = new Owca;
-	Owca* owca3 = new Owca;
-	Owca* owca4 = new Owca;
-	Owca* owca5 = new Owca;
-	Owca* owca6 = new Owca;
-	Owca* owca7 = new Owca;
-	Owca* owca8 = new Owca;
-	Owca* owca9 = new Owca;
-	Owca* owca10 = new Owca;
-	Lis* lis = new Lis;
-	Lis* lis2 = new Lis;
-	Lis* lis3 = new Lis;
-	Lis* lis4 = new Lis;
-	Lis* lis5 = new Lis;
-	Zolw* zolw = new Zolw;
-	Wilk* wilk = new Wilk;
+	Lis* lis[20]{};
+	for (int i = 0; i < 20; i++) {
+		lis[i] = new Lis;
+	}
 
+	Wilk* wilk[1]{};
+	for (int i = 0; i < 1; i++) {
+		wilk[i] = new Wilk;
+	}
+
+	Zolw* zolw[5]{};
+	for (int i = 0; i < 5; i++) {
+		zolw[i] = new Zolw;
+	}
 }
 
 //World::~World();
