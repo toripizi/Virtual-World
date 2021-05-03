@@ -31,19 +31,33 @@ int main()
 
 	Human* human = new Human;
 
+	cout << "C - czlowiek | ";
+	cout << "W - wilk | ";
+	cout << "O - owca | ";
+	cout << "L - lis | ";
+	cout << "Z - zolw | ";
+	cout << "A - antylopa | " << endl;
 	world.drawWorld();
-	cout << endl << "C - czlowiek" << endl;
-	cout << "W - wilk" << endl;
-	cout << "O - owca" << endl;
-	cout << "L - lis" << endl;
-	cout << "Z - zolw" << endl;
-	cout << "A - antylopa" << endl;
-	goToxy(0, 0);
+	
 	while (!world.getGameOver()) {
 		if (_kbhit())
 		{
 			human->control();
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
+			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
 			goToxy(0, 0);
+			cout << "C - czlowiek | ";
+			cout << "W - wilk | ";
+			cout << "O - owca | ";
+			cout << "L - lis | ";
+			cout << "Z - zolw | ";
+			cout << "A - antylopa | " << endl;
+			world.drawWorld();
 		}
 	}
 

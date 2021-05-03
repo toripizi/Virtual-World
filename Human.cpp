@@ -57,7 +57,6 @@ void Human::control() {
 	//ESC
 	case 122:
 		world.nextTurn();
-		world.drawWorld();
 		break;
 	case 27: //klawisze specjalne
 		world.setGameOver();

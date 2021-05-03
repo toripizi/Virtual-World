@@ -3,11 +3,11 @@
 #include "animals.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfOwca = 1;
-	const int numberOfLis = 1;
+	const int numberOfOwca = 10;
+	const int numberOfLis = 10;
 	const int numberOfWilk = 1;
-	const int numberOfZolw = 1;
-	const int numberOfAntylopa = 50;
+	const int numberOfZolw = 20;
+	const int numberOfAntylopa = 10;
 
 	tab = new Square * [H];
 	for (int i = 0; i < H; i++) {
@@ -75,7 +75,4 @@ const bool World::getGameOver(){
 
 void World::nextTurn() {
 	world.organisms.MAKE_ACTION();
-	//nie moge tak iterowaæ
-	//muszê tylko po organizmach
-	//najlepiej od najmniejszego activity
 }

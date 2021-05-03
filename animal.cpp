@@ -59,12 +59,14 @@ void Animal::conflict() {
 			if (Human* human = dynamic_cast<Human*>(this)) {
 				world.setGameOver();
 			}
+			cout << this->getName() << " zostal zjedzony przez: " << animal->getName() << endl;
 			delete this;
 		}
 		else{
 			if (Human* human = dynamic_cast<Human*>(animal)) {
 				world.setGameOver();
 			}
+			cout << animal->getName() << " zostal zjedzony przez: " << this->getName() << endl;
 			delete animal;
 			display();
 		}
