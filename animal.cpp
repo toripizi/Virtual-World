@@ -43,7 +43,10 @@ void Animal::action() {
 		if (world.tab[xX][yY].organism == nullptr) {
 			display();
 		}
-		else {
+		else if(world.tab[xX][yY].organism->getName() != "zolw") {
+			conflict();
+		}
+		else if(strength >= 5) {
 			conflict();
 		}
 	}
