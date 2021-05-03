@@ -65,6 +65,26 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	void checkField(int newX, int newY){
+		if (newX >= 0 &&
+			newX < world.getWidth() &&
+			newY >= 0 &&
+			newY < world.getHeight())
+		{
+			if (world.tab[newX][newY].organism) {
+				if (world.tab[newX][newY].organism->getStrength() <= strength) {
+					tab[0][numberOfAvailableFields] = newX;
+					tab[1][numberOfAvailableFields] = newY;
+					numberOfAvailableFields++;
+				}
+			}
+			else {
+				tab[0][numberOfAvailableFields] = newX;
+				tab[1][numberOfAvailableFields] = newY;
+				numberOfAvailableFields++;
+			}
+		}
+	}
 };
 class Zolw : public Animal {
 public:
@@ -86,5 +106,10 @@ public:
 		world.tab[x][y].setSign(this->getSign());
 
 		world.organisms.PUSH(this);
+	}
+	void move() {
+		if (rand() % 4 == 0) {
+			Animal::move();
+		}
 	}
 };
