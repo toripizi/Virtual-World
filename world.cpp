@@ -3,28 +3,33 @@
 #include "animals.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
+	const int numberOfOwca = 1;
+	const int numberOfLis = 1;
+	const int numberOfWilk = 1;
+	const int numberOfZolw = 50;
+
 	tab = new Square * [H];
 	for (int i = 0; i < H; i++) {
 		tab[i] = new Square[W];
 	}
 	
-	Owca* owca[50]{};
-	for(int i = 0; i < 50; i++) {
+	Owca* owca[numberOfOwca]{};
+	for(int i = 0; i < numberOfOwca; i++) {
 		owca[i] = new Owca;
 	}
 
-	Lis* lis[20]{};
-	for (int i = 0; i < 20; i++) {
+	Lis* lis[numberOfLis]{};
+	for (int i = 0; i < numberOfLis; i++) {
 		lis[i] = new Lis;
 	}
 
-	Wilk* wilk[1]{};
-	for (int i = 0; i < 1; i++) {
+	Wilk* wilk[numberOfWilk]{};
+	for (int i = 0; i < numberOfWilk; i++) {
 		wilk[i] = new Wilk;
 	}
 
-	Zolw* zolw[5]{};
-	for (int i = 0; i < 5; i++) {
+	Zolw* zolw[numberOfZolw]{};
+	for (int i = 0; i < numberOfZolw; i++) {
 		zolw[i] = new Zolw;
 	}
 }

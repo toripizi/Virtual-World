@@ -7,44 +7,35 @@
 Animal::~Animal() {
 	world.organisms.DELETE_ELEMENT(this);
 }
+
+void Animal::checkField(int newX, int newY) {
+	if(newX >= 0 && 
+		newX < world.getWidth() && 
+		newY >= 0 && 
+		newY < world.getHeight()) 
+	{
+		tab[0][numberOfAvailableFields] = newX;
+		tab[1][numberOfAvailableFields] = newY;
+		numberOfAvailableFields++;
+	}
+}
+
 void Animal::move() {
-	do {
-		int random = rand() % 8;
-		switch (random) {
-		case 0:
-			xX = x - 1;
-			yY = y;
-			break;
-		case 1:
-			xX = x - 1;
-			yY = y + 1;
-			break;
-		case 2:
-			xX = x;
-			yY = y + 1;
-			break;
-		case 3:
-			xX = x + 1;
-			yY = y + 1;
-			break;
-		case 4:
-			xX = x + 1;
-			yY = y;
-			break;
-		case 5:
-			xX = x + 1;
-			yY = y - 1;
-			break;
-		case 6:
-			xX = x;
-			yY = y - 1;
-			break;
-		case 7:
-			xX = x - 1;
-			yY = y - 1;
-			break;
-		}
-	} while (xX < 0 || xX >= world.getWidth() || yY < 0 || yY >= world.getHeight());
+	numberOfAvailableFields = 0;
+	checkField(x - 1, y);
+	checkField(x - 1, y + 1);
+	checkField(x, y + 1);
+	checkField(x + 1, y + 1);
+	checkField(x + 1, y);
+	checkField(x + 1, y - 1);
+	checkField(x, y - 1);
+	checkField(x - 1, y - 1);
+	
+	if (numberOfAvailableFields) {
+		int random = rand() % numberOfAvailableFields;
+		xX = tab[0][random];
+		yY = tab[1][random];
+	}
 }
 
 void Animal::action() {

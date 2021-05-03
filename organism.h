@@ -21,6 +21,7 @@ public:
 	virtual void conflict() = 0;
 	virtual void display() = 0;
 	virtual void move() = 0;
+	virtual void checkField(int newX, int newY) = 0;
 
 	void changeXY(int newX, int newY);
 

@@ -5,14 +5,19 @@
 class Animal :public Organism
 {
 protected:
-	~Animal();
+	int numberOfAvailableFields = 0;
 	World* World = &world;
 	//Animal();
 	void action() override;
 	void conflict() override;
 	void display() override;
-public:
 	void move() override;
-	
+	void checkField(int newX, int newY) override;
+
+public:
+	int tab[2][8]{};
+
+	~Animal();
+
 };
 
