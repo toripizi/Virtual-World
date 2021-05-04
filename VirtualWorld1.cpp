@@ -31,12 +31,6 @@ int main()
 
 	Human* human = new Human;
 
-	cout << "C - czlowiek | ";
-	cout << "W - wilk | ";
-	cout << "O - owca | ";
-	cout << "L - lis | ";
-	cout << "Z - zolw | ";
-	cout << "A - antylopa | " << endl;
 	world.drawWorld();
 	
 	while (!world.getGameOver()) {
@@ -51,12 +45,6 @@ int main()
 			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
 			cout << "||||||||||||||||||||||||||||||||||||||||||||" << endl;
 			goToxy(0, 0);
-			cout << "C - czlowiek | ";
-			cout << "W - wilk | ";
-			cout << "O - owca | ";
-			cout << "L - lis | ";
-			cout << "Z - zolw | ";
-			cout << "A - antylopa | " << endl;
 			world.drawWorld();
 		}
 	}

@@ -3,15 +3,15 @@
 #include "animals.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfOwca = 10;
-	const int numberOfLis = 10;
+	const int numberOfOwca = 395;
+	const int numberOfLis = 1;
 	const int numberOfWilk = 1;
-	const int numberOfZolw = 20;
-	const int numberOfAntylopa = 10;
+	const int numberOfZolw = 1;
+	const int numberOfAntylopa = 1;
 
-	tab = new Square * [H];
-	for (int i = 0; i < H; i++) {
-		tab[i] = new Square[W];
+	tab = new Square * [W];
+	for (int i = 0; i < W; i++) {
+		tab[i] = new Square[H];
 	}
 	
 	Owca* owca[numberOfOwca]{};
@@ -50,6 +50,13 @@ int World::getWidth() {
 }
 
 void World::drawWorld() {
+	cout << "C - czlowiek | ";
+	cout << "W - wilk | ";
+	cout << "O - owca | ";
+	cout << "L - lis | ";
+	cout << "Z - zolw | ";
+	cout << "A - antylopa | " << endl;
+
 	for (int i = 0; i < height + 2; i++) {
 		for (int j = 0; j < width + 2; j++) {
 			if (i == 0 || i == height + 1 || j == 0 || j == width + 1) {
@@ -57,7 +64,7 @@ void World::drawWorld() {
 				std::cout << (char)219;
 			}
 			else {
-				std::cout << tab[i - 1][j - 1].getSign();
+				std::cout << tab[j - 1][i - 1].getSign();
 				cout << " ";
 			}
 		}

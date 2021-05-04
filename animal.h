@@ -9,7 +9,7 @@ protected:
 	World* World = &world;
 	//Animal();
 	void action() override;
-	void conflict() override;
+	void conflict(Organism* enemy) override;
 	void display() override;
 	void move() override;
 	void checkField(int newX, int newY) override;

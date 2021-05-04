@@ -43,43 +43,61 @@ void Animal::action() {
 		if (world.tab[xX][yY].organism == nullptr) {
 			display();
 		}
-		else if(world.tab[xX][yY].organism->getName() != "zolw") {
-			conflict();
+		else if (world.tab[xX][yY].organism->getName() != "zolw") {
+			world.tab[xX][yY].organism->conflict(this);
 		}
-		else if(strength >= 5) {
-			conflict();
+		else if (strength >= 5) {
+			world.tab[xX][yY].organism->conflict(this);
+		}
+		else {
+			xX = x;
+			yY = y;
 		}
 	}
 }
-void Animal::conflict() {
-	if (Animal* animal = dynamic_cast<Animal*>(world.tab[xX][yY].organism)) {
-		if (animal->strength > this->strength) {
-			world.tab[x][y].setSign(' ');
-			world.tab[x][y].organism = nullptr;
-			if (Human* human = dynamic_cast<Human*>(this)) {
-				world.setGameOver();
-			}
-			cout << this->getName() << " zostal zjedzony przez: " << animal->getName() << endl;
+void Animal::conflict(Organism* enemy) {
+	if (Animal* animal = dynamic_cast<Animal*>(enemy)) {
+		if (enemy->getStrength() >= this->strength) {
+			//wyœwietlam atakuj¹cego na nowym polu
+			enemy->display();
+
+			//komunikat
+			cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << endl;
+
+			//usuwam this
 			delete this;
 		}
-		else{
-			if (Human* human = dynamic_cast<Human*>(animal)) {
+		else {
+			//atakuj¹cy przegrywa
+			//wiêc ustawiam jego polna na puste
+			world.tab[enemy->getX()][enemy->getY()].setSign(' ');
+			world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
+
+			//komunikat
+			cout << enemy->getName() << " zostal zjedzony przez: " << this->getName() << endl;
+
+			//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
+			if (Human* human = dynamic_cast<Human*>(enemy)) {
 				world.setGameOver();
 			}
-			cout << animal->getName() << " zostal zjedzony przez: " << this->getName() << endl;
+
+			//usuwam atakuj¹cego
 			delete animal;
-			display();
 		}
 	}
 	else if (Plant* plant = dynamic_cast<Plant*>(world.tab[xX][yY].organism)) {
 	}
 }
 void Animal::display() {
+	//this wygrywa
+	//wiec ustawiam jego pola na puste
 	world.tab[x][y].setSign(' ');
 	world.tab[x][y].organism = nullptr;
-
+	
+	//zmieniam x i y na xX i yY
 	changeXY(xX, yY);
 	
+	//ustawiam nowe pole na this
 	world.tab[x][y].organism = this;
 	world.tab[x][y].setSign(this->getSign());
 }

@@ -18,7 +18,7 @@ protected:
 	
 public:
 	virtual void action() = 0;
-	virtual void conflict() = 0;
+	virtual void conflict(Organism* org) = 0;
 	virtual void display() = 0;
 	virtual void move() = 0;
 	virtual void checkField(int newX, int newY) = 0;

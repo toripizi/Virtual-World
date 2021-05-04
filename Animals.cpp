@@ -26,8 +26,8 @@ class Owca : public Animal {
 public:
 	Owca() {
 		do {
-			xX = rand() % (world.getWidth() - 1);
-			yY = rand() % (world.getHeight() - 1);
+			xX = rand() % world.getWidth();
+			yY = rand() % world.getHeight();
 		} while (world.tab[xX][yY].organism != nullptr);
 
 		x = xX;
@@ -48,8 +48,8 @@ class Lis : public Animal {
 public:
 	Lis() {
 		do {
-			xX = rand() % (world.getWidth() - 1);
-			yY = rand() % (world.getHeight() - 1);
+			xX = rand() % world.getWidth();
+			yY = rand() % world.getHeight();
 		} while (world.tab[xX][yY].organism != nullptr);
 
 		x = xX;
@@ -90,8 +90,8 @@ class Zolw : public Animal {
 public:
 	Zolw() {
 		do {
-			xX = rand() % (world.getWidth() - 1);
-			yY = rand() % (world.getHeight() - 1);
+			xX = rand() % world.getWidth();
+			yY = rand() % world.getHeight();
 		} while (world.tab[xX][yY].organism != nullptr);
 
 		x = xX;
@@ -118,8 +118,8 @@ class Antylopa : public Animal {
 public:
 	Antylopa() {
 		do {
-			xX = rand() % (world.getWidth() - 1);
-			yY = rand() % (world.getHeight() - 1);
+			xX = rand() % world.getWidth();
+			yY = rand() % world.getHeight();
 		} while (world.tab[xX][yY].organism != nullptr);
 
 		x = xX;
@@ -140,6 +140,18 @@ public:
 			newX < world.getWidth() &&
 			newY >= 0 &&
 			newY < world.getHeight())
+		{
+			tab[0][numberOfAvailableFields] = newX;
+			tab[1][numberOfAvailableFields] = newY;
+			numberOfAvailableFields++;
+		}
+	}
+	void checkField2(int newX, int newY) {
+		if (newX >= 0 &&
+			newX < world.getWidth() &&
+			newY >= 0 &&
+			newY < world.getHeight() &&
+			world.tab[newX][newY].organism == nullptr)
 		{
 			tab[0][numberOfAvailableFields] = newX;
 			tab[1][numberOfAvailableFields] = newY;
@@ -177,6 +189,38 @@ public:
 			int random = rand() % numberOfAvailableFields;
 			xX = tab[0][random];
 			yY = tab[1][random];
+		}
+	}
+	void conflict(Organism* enemy) {
+		if (rand() % 2 == 0) {
+			//antylopa ucieka na s¹siednie niezajête pole
+			//sprawdzam czy taki pole istnieje
+			numberOfAvailableFields = 0;
+			checkField2(x - 1, y);
+			checkField2(x - 1, y + 1);
+			checkField2(x, y + 1);
+			checkField2(x + 1, y + 1);
+			checkField2(x + 1, y);
+			checkField2(x + 1, y - 1);
+			checkField2(x, y - 1);
+			checkField2(x - 1, y - 1);
+
+			if (numberOfAvailableFields) {
+				//jesli istnieje
+				int random = rand() % numberOfAvailableFields;
+				xX = tab[0][random];
+				yY = tab[1][random];
+				display();
+				enemy->display();
+			}
+			else {
+				//jesli nie istnieje
+				Animal::conflict(enemy);
+			}
+			
+		}
+		else {
+			Animal::conflict(enemy);
 		}
 	}
 };

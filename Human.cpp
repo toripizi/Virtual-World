@@ -3,8 +3,8 @@
 
 Human::Human() {
 	do {
-		xX = rand() % (world.getWidth() - 1);
-		yY = rand() % (world.getHeight() - 1);
+		xX = rand() % world.getWidth();
+		yY = rand() % world.getHeight();
 	} while (world.tab[xX][yY].organism != nullptr);
 	
 	x = xX;
@@ -37,20 +37,20 @@ void Human::control() {
 		switch (znak)
 		{
 		case 80: //strza³ka w dol
-			xX = x + 1;
-			yY = y;
+			xX = x;
+			yY = y + 1;
 			break;
 		case 72: //strza³ka w gore
-			xX = x - 1;
-			yY = y;
-			break;
-		case 75: //strza³ka w lewo
 			xX = x;
 			yY = y - 1;
 			break;
+		case 75: //strza³ka w lewo
+			xX = x - 1;
+			yY = y;
+			break;
 		case 77: //strza³ka w prawo
-			xX = x;
-			yY = y + 1;
+			xX = x + 1;
+			yY = y;
 			break;
 		}
 		break;
