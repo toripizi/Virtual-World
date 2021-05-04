@@ -58,11 +58,17 @@ void Animal::action() {
 void Animal::conflict(Organism* enemy) {
 	if (Animal* animal = dynamic_cast<Animal*>(enemy)) {
 		if (enemy->getStrength() >= this->strength) {
+			//atakuj¹cy wygrywa
 			//wyœwietlam atakuj¹cego na nowym polu
 			enemy->display();
 
 			//komunikat
-			cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << endl;
+			cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << " ||| ";
+
+			//jeœli this jest cz³owiek, koñczymy gre
+			if (Human* human = dynamic_cast<Human*>(this)) {
+				world.setGameOver();
+			}
 
 			//usuwam this
 			delete this;
@@ -74,7 +80,7 @@ void Animal::conflict(Organism* enemy) {
 			world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
 
 			//komunikat
-			cout << enemy->getName() << " zostal zjedzony przez: " << this->getName() << endl;
+			cout << enemy->getName() << " zostal zjedzony przez: " << this->getName() << " ||| ";
 
 			//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
 			if (Human* human = dynamic_cast<Human*>(enemy)) {

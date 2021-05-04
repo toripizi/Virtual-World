@@ -1,19 +1,50 @@
 #include "world.h"
 #include "animal.h"
 #include "animals.cpp"
+#include "Plants.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfOwca = 395;
-	const int numberOfLis = 1;
-	const int numberOfWilk = 1;
-	const int numberOfZolw = 1;
-	const int numberOfAntylopa = 1;
+	const int numberOfBarszcz = 10;
+	const int numberOfWilczeJagody = 10;
+	const int numberOfGuarana = 10;
+	const int numberOfMlecz = 2;
+	const int numberOfTrawa = 10;
+	const int numberOfOwca = 50;
+	const int numberOfLis = 10;
+	const int numberOfWilk = 5;
+	const int numberOfZolw = 20;
+	const int numberOfAntylopa = 30;
 
 	tab = new Square * [W];
 	for (int i = 0; i < W; i++) {
 		tab[i] = new Square[H];
 	}
 	
+	BarszczSosnowskiego* barszcz[numberOfBarszcz]{};
+	for (int i = 0; i < numberOfBarszcz; i++) {
+		barszcz[i] = new BarszczSosnowskiego;
+	}
+
+	WilczeJagody* jagody[numberOfWilczeJagody]{};
+	for (int i = 0; i < numberOfGuarana; i++) {
+		jagody[i] = new WilczeJagody;
+	}
+
+	Guarana* guarana[numberOfGuarana]{};
+	for (int i = 0; i < numberOfGuarana; i++) {
+		guarana[i] = new Guarana;
+	}
+
+	Mlecz* mlecz[numberOfMlecz]{};
+	for (int i = 0; i < numberOfMlecz; i++) {
+		mlecz[i] = new Mlecz;
+	}
+
+	Trawa* trawa[numberOfTrawa]{};
+	for (int i = 0; i < numberOfTrawa; i++) {
+		trawa[i] = new Trawa;
+	}
+
 	Owca* owca[numberOfOwca]{};
 	for(int i = 0; i < numberOfOwca; i++) {
 		owca[i] = new Owca;
@@ -59,7 +90,7 @@ void World::drawWorld() {
 
 	for (int i = 0; i < height + 2; i++) {
 		for (int j = 0; j < width + 2; j++) {
-			if (i == 0 || i == height + 1 || j == 0 || j == width + 1) {
+			if(i == 0 || i == height + 1 || j == 0 || j == width + 1) {
 				std::cout << (char)219;
 				std::cout << (char)219;
 			}

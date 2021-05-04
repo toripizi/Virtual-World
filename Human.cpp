@@ -11,7 +11,7 @@ Human::Human() {
 	y = yY;
 
 	name = "human";
-	sign = 'C';
+	sign = '+';
 	strength = 5;
 	activity = 4;
 	

@@ -149,6 +149,7 @@
     <ClCompile Include="List.cpp" />
     <ClCompile Include="organism.cpp" />
     <ClCompile Include="plant.cpp" />
+    <ClCompile Include="Plants.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="VirtualWorld1.cpp" />
     <ClCompile Include="world.cpp" />

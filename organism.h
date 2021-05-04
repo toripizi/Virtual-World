@@ -34,6 +34,8 @@ public:
 	const int getStrength();
 	const int getActivity();
 
+	void setStrength(int newStrength);
+
 	void setName(std::string newName);
 	const std::string getName();
 

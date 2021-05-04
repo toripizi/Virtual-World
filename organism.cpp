@@ -21,6 +21,10 @@ void Organism::setY(int newY) {
 const int Organism::getStrength() {
 	return strength;
 }
+void Organism::setStrength(int newStrength) {
+	strength = newStrength;
+}
+
 const int Organism::getActivity() {
 	return activity;
 }
