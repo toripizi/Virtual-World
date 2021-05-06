@@ -4,16 +4,16 @@
 #include "Plants.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfBarszcz = 1;
-	const int numberOfWilczeJagody = 1;
-	const int numberOfGuarana = 40;
-	const int numberOfMlecz = 1;
-	const int numberOfTrawa = 1;
-	const int numberOfOwca = 8;
-	const int numberOfLis = 8;
-	const int numberOfWilk = 3;
-	const int numberOfZolw = 4;
-	const int numberOfAntylopa = 4;
+	const int numberOfBarszcz = 10;
+	const int numberOfWilczeJagody = 10;
+	const int numberOfGuarana = 20;
+	const int numberOfMlecz = 20;
+	const int numberOfTrawa = 20;
+	const int numberOfOwca = 20;
+	const int numberOfLis = 20;
+	const int numberOfWilk = 20;
+	const int numberOfZolw = 100;
+	const int numberOfAntylopa = 20;
 
 	tab = new Square * [W];
 	for (int i = 0; i < W; i++) {
@@ -95,8 +95,7 @@ void World::drawWorld() {
 				std::cout << (char)219;
 			}
 			else {
-				std::cout << tab[j - 1][i - 1].getSign();
-				cout << " ";
+				tab[j - 1][i - 1].display();
 			}
 		}
 		std::cout << std::endl;

@@ -15,6 +15,7 @@ protected:
 	int yY = 0;
 	std::string name = "empty";
 	unsigned char sign = ' ';
+	int color = 15;
 	
 public:
 	virtual void action() = 0;
@@ -32,9 +33,13 @@ public:
 	void setY(int newY);
 	
 	const int getStrength();
+	void setStrength(int newStrength);
+
 	const int getActivity();
 
-	void setStrength(int newStrength);
+	const int getColor();
+	void setColor(int newColor);
+
 
 	void setName(std::string newName);
 	const std::string getName();

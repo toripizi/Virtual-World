@@ -11,8 +11,8 @@ protected:
 	World* World = &world;
 
 	void conflict(Organism* enemy) override;
-	void display() override;
-	void move() override;
+	void display() override {};
+	void move() override; 
 	void checkField(int newX, int newY) override;
 
 public:

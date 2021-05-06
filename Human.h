@@ -6,9 +6,9 @@ class Human :public Animal
 public:
 	Human();
 	~Human();
-	void move() override;
+	void move() override {}
 	void control();
-	void createChild(int xxx, int yyy) override;
+	void createChild(int xxx, int yyy) override {}
 
 };
 

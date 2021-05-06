@@ -17,6 +17,7 @@ public:
 		sign = 'T';
 		strength = 0;
 		activity = 0;
+		color = 10;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -31,6 +32,7 @@ public:
 		sign = 'T';
 		strength = 0;
 		activity = 0;
+		color = 10;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -58,6 +60,7 @@ public:
 		sign = 'M';
 		strength = 0;
 		activity = 0;
+		color = 6;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -72,6 +75,7 @@ public:
 		sign = 'M';
 		strength = 0;
 		activity = 0;
+		color = 6;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -99,6 +103,7 @@ public:
 		sign = 'G';
 		strength = 0;
 		activity = 0;
+		color = 5;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -113,7 +118,7 @@ public:
 		sign = 'G';
 		strength = 0;
 		activity = 0;
-
+		color = 5;
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
 
@@ -144,7 +149,8 @@ public:
 		sign = 'J';
 		strength = 999;
 		activity = 0;
-		
+		color = 1;
+
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
 
@@ -158,6 +164,7 @@ public:
 		sign = 'J';
 		strength = 999;
 		activity = 0;
+		color = 1;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -185,6 +192,7 @@ public:
 		sign = 'B';
 		strength = 10;
 		activity = 0;
+		color = 7;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
@@ -199,6 +207,7 @@ public:
 		sign = 'B';
 		strength = 10;
 		activity = 0;
+		color = 7;
 
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());

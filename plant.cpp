@@ -35,9 +35,6 @@ void Plant::conflict(Organism* enemy) {
 		}
 	}
 }
-void Plant::display() {
-
-}
 void Plant::move() {
 	if (!newOne) {
 		numberOfAvailableFields = 0;

@@ -5,7 +5,12 @@ void Organism::changeXY(int newX, int newY) {
 	x = newX;
 	y = newY;
 }
-
+const int Organism::getColor() {
+	return color;
+}
+void Organism::setColor(int newColor) {
+	color = newColor;
+}
 const int Organism::getX() {
 	return x;
 }

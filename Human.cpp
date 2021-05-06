@@ -11,10 +11,11 @@ Human::Human() {
 	y = yY;
 
 	name = "human";
-	sign = '+';
-	strength = 500000;
+	sign = 'C';
+	strength = 50000;
 	activity = 4;
-	
+	color = 4;
+
 	world.tab[x][y].organism = this;
 	world.tab[x][y].setSign(this->getSign());
 
@@ -23,9 +24,6 @@ Human::Human() {
 
 Human::~Human() {
 	std::cout << "asd";
-}
-
-void Human::move() {
 }
 
 void Human::control() {
@@ -63,7 +61,3 @@ void Human::control() {
 		break;
 	}
 }
-
-void Human::createChild(int xxx, int yyy) {
-}
-
