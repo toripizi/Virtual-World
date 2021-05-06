@@ -43,7 +43,10 @@ void Animal::action() {
 		if (world.tab[xX][yY].organism == nullptr) {
 			display();
 		}
-		else if (world.tab[xX][yY].organism->getName() != "zolw") {
+		else if (world.tab[xX][yY].organism->getName() != "zolw" ) {
+			world.tab[xX][yY].organism->conflict(this);
+		}
+		else if (this->getName() == "zolw") {
 			world.tab[xX][yY].organism->conflict(this);
 		}
 		else if (strength >= 5) {
@@ -55,15 +58,62 @@ void Animal::action() {
 		}
 	}
 }
+
+void Animal::checkFieldToChild(int newX, int newY) {
+	if (newX >= 0 &&
+		newX < world.getWidth() &&
+		newY >= 0 &&
+		newY < world.getHeight() &&
+		World->tab[newX][newY].organism == nullptr)
+	{
+		tab[0][numberOfAvailableFields] = newX;
+		tab[1][numberOfAvailableFields] = newY;
+		numberOfAvailableFields++;
+	}
+}
+
+int Animal::duplicate() {
+	numberOfAvailableFields = 0;
+	checkFieldToChild(x - 1, y);
+	checkFieldToChild(x - 1, y + 1);
+	checkFieldToChild(x, y + 1);
+	checkFieldToChild(x + 1, y + 1);
+	checkFieldToChild(x + 1, y);
+	checkFieldToChild(x + 1, y - 1);
+	checkFieldToChild(x, y - 1);
+	checkFieldToChild(x - 1, y - 1);
+
+	return numberOfAvailableFields;
+}
+
 void Animal::conflict(Organism* enemy) {
 	if (Animal* animal = dynamic_cast<Animal*>(enemy)) {
-		if (enemy->getStrength() >= this->strength) {
+		if (enemy->getName() == this->getName()) {
+			//rozmna¿anie 
+			int numberOfAvailableFieldsThis = this->duplicate();
+			int numberOfAvailableFieldsAnimal = animal->duplicate();
+			int razem = numberOfAvailableFieldsThis + numberOfAvailableFieldsAnimal;
+			if (razem) {
+				int random = rand() % razem;
+				//sprawdzam czy wylosowana liczba miesci sie w zakresie dostepnych pól dla this
+				if (random < numberOfAvailableFieldsThis) {
+					this->createChild(this->tab[0][random], this->tab[1][random]);
+				}
+				else {
+					// jesli nie 
+					//to dziecko rodzi sie na polu dostepnemu dla animal
+					animal->createChild(animal->tab[0][random-numberOfAvailableFieldsThis], animal->tab[1][random-numberOfAvailableFieldsThis]);
+				}
+			}
+
+		}
+		else if (enemy->getStrength() >= this->strength) {
 			//atakuj¹cy wygrywa
 			//wyœwietlam atakuj¹cego na nowym polu
 			enemy->display();
 
 			//komunikat
-			cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << " ||| ";
+			//cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << " ||| ";
 
 			//jeœli this jest cz³owiek, koñczymy gre
 			if (Human* human = dynamic_cast<Human*>(this)) {
@@ -80,7 +130,7 @@ void Animal::conflict(Organism* enemy) {
 			world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
 
 			//komunikat
-			cout << enemy->getName() << " zostal zjedzony przez: " << this->getName() << " ||| ";
+			//cout << enemy->getName() << " zostal zjedzony przez: " << this->getName() << " ||| ";
 
 			//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
 			if (Human* human = dynamic_cast<Human*>(enemy)) {

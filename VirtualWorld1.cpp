@@ -10,7 +10,6 @@
 #include "List.h"
 
 using namespace std;
-
 //ustawia kursor w konsoli na 0,0
 //przez co plansza sie nadpisuje
 void goToxy(int x, int y)
@@ -31,18 +30,27 @@ int main()
 
 	Human* human = new Human;
 
+	cout << "SILA: " << human->getStrength() << endl;
 	world.drawWorld();
 	
 	while (!world.getGameOver()) {
 		if (_kbhit())
 		{
 			human->control();
-			cout << endl;
-			for (int i = 0; i < 200; i++) {
-				cout << "||||";
-			}
+			
+			for (int i = 0; i < 200; i++) cout << "||||";
+			
 			goToxy(0, 0);
+			
+			cout << "SILA: " << human->getStrength() << endl;
+			
 			world.drawWorld();
+		}
+		if (world.getGameOver()) {
+			cout << "Przegrales :///////////////////";
+			cout << endl << "napisz cos aby wyjsc z gry";
+			int o;
+			cin >> o;
 		}
 	}
 

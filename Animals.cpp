@@ -21,6 +21,26 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	Wilk(int newX, int newY) {
+		xX = newX;
+		yY = newY;
+		x = xX;
+		y = yY;
+
+		name = "wilk";
+		sign = 'W';
+		strength = 9;
+		activity = 5;
+
+		World->tab[x][y].organism = this;
+		World->tab[x][y].setSign(this->getSign());
+
+		World->organisms.PUSH(this);
+	}
+	void createChild(int newX, int newY) override {
+		Wilk* childW = new Wilk(newX, newY);
+	}
+
 };
 class Owca : public Animal {
 public:
@@ -43,6 +63,27 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	Owca(int newX, int newY) {
+
+		xX = newX;
+		yY = newY;
+		x = xX;
+		y = yY;
+
+		name = "owca";
+		sign = 'O';
+		strength = 4;
+		activity = 3;
+
+		World->tab[x][y].organism = this;
+		World->tab[x][y].setSign(this->getSign());
+
+		World->organisms.PUSH(this);
+	}
+	void createChild(int newX, int newY) override {
+		Owca* childO = new Owca(newX, newY);
+	}
+
 };
 class Lis : public Animal {
 public:
@@ -65,6 +106,24 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	Lis(int newX, int newY) {
+
+		xX = newX;
+		yY = newY;
+		x = xX;
+		y = yY;
+
+		name = "lis";
+		sign = 'L';
+		strength = 3;
+		activity = 7;
+
+		world.tab[x][y].organism = this;
+		world.tab[x][y].setSign(this->getSign());
+
+		world.organisms.PUSH(this);
+	}
+
 	void checkField(int newX, int newY){
 		if (newX >= 0 &&
 			newX < world.getWidth() &&
@@ -84,6 +143,9 @@ public:
 				numberOfAvailableFields++;
 			}
 		}
+	}
+	void createChild(int newX, int newY) override {
+		Lis* childL = new Lis(newX, newY);
 	}
 };
 class Zolw : public Animal {
@@ -107,10 +169,31 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	Zolw(int newX, int newY) {
+
+		xX = newX;
+		yY = newY;
+		x = xX;
+		y = yY;
+
+		name = "zolw";
+		sign = 'Z';
+		strength = 2;
+		activity = 1;
+
+		world.tab[x][y].organism = this;
+		world.tab[x][y].setSign(this->getSign());
+
+		world.organisms.PUSH(this);
+	}
+
 	void move() {
 		if (rand() % 4 == 0) {
 			Animal::move();
 		}
+	}
+	void createChild(int newX, int newY) override {
+		Zolw* childZ = new Zolw(newX, newY);
 	}
 };
 class Antylopa : public Animal {
@@ -135,6 +218,24 @@ public:
 
 		world.organisms.PUSH(this);
 	}
+	Antylopa(int newX, int newY) {
+
+		xX = newX;
+		yY = newY;
+		x = xX;
+		y = yY;
+
+		name = "antylopa";
+		sign = 'A';
+		strength = 4;
+		activity = 4;
+
+		world.tab[x][y].organism = this;
+		world.tab[x][y].setSign(this->getSign());
+
+		world.organisms.PUSH(this);
+	}
+
 	void checkField(int newX, int newY) {
 		if (newX >= 0 &&
 			newX < world.getWidth() &&
@@ -192,7 +293,7 @@ public:
 		}
 	}
 	void conflict(Organism* enemy) {
-		if (rand() % 2 == 0) {
+		if (rand() % 2 == 0 && enemy->getName() != "antylopa") {
 			//antylopa ucieka na s¹siednie niezajête pole
 			//sprawdzam czy taki pole istnieje
 			numberOfAvailableFields = 0;
@@ -222,5 +323,8 @@ public:
 		else {
 			Animal::conflict(enemy);
 		}
+	}
+	void createChild(int newX, int newY) override{
+		Antylopa* childA = new Antylopa(newX, newY);
 	}
 };

@@ -4,16 +4,16 @@
 #include "Plants.cpp"
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfBarszcz = 10;
-	const int numberOfWilczeJagody = 10;
-	const int numberOfGuarana = 10;
-	const int numberOfMlecz = 2;
-	const int numberOfTrawa = 10;
-	const int numberOfOwca = 50;
-	const int numberOfLis = 10;
-	const int numberOfWilk = 5;
-	const int numberOfZolw = 20;
-	const int numberOfAntylopa = 30;
+	const int numberOfBarszcz = 1;
+	const int numberOfWilczeJagody = 1;
+	const int numberOfGuarana = 40;
+	const int numberOfMlecz = 1;
+	const int numberOfTrawa = 1;
+	const int numberOfOwca = 8;
+	const int numberOfLis = 8;
+	const int numberOfWilk = 3;
+	const int numberOfZolw = 4;
+	const int numberOfAntylopa = 4;
 
 	tab = new Square * [W];
 	for (int i = 0; i < W; i++) {
@@ -26,7 +26,7 @@ World::World(int H, int W) : height(H), width(W) {
 	}
 
 	WilczeJagody* jagody[numberOfWilczeJagody]{};
-	for (int i = 0; i < numberOfGuarana; i++) {
+	for (int i = 0; i < numberOfWilczeJagody; i++) {
 		jagody[i] = new WilczeJagody;
 	}
 

@@ -12,7 +12,7 @@ Human::Human() {
 
 	name = "human";
 	sign = '+';
-	strength = 5;
+	strength = 500000;
 	activity = 4;
 	
 	world.tab[x][y].organism = this;
@@ -62,5 +62,8 @@ void Human::control() {
 		world.setGameOver();
 		break;
 	}
+}
+
+void Human::createChild(int xxx, int yyy) {
 }
 

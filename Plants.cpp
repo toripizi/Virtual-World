@@ -144,7 +144,7 @@ public:
 		sign = 'J';
 		strength = 999;
 		activity = 0;
-
+		
 		world.tab[x][y].organism = this;
 		world.tab[x][y].setSign(this->getSign());
 
@@ -220,8 +220,8 @@ public:
 					}
 					world.tab[animal->getX()][animal->getY()].organism = nullptr;
 					world.tab[animal->getX()][animal->getY()].setSign(' ');
-					cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
-					cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
+					//cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
+					//cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
 
 					delete animal;
 				}

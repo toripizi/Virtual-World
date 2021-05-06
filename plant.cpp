@@ -11,7 +11,7 @@ void Plant::conflict(Organism* enemy) {
 			enemy->display();
 
 			//komunikat
-			cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << " ||| ";
+			//cout << this->getName() << " zostal zjedzony przez: " << enemy->getName() << " ||| ";
 
 			//usuwam this
 			delete this;
@@ -23,7 +23,7 @@ void Plant::conflict(Organism* enemy) {
 			world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
 
 			//komunikat
-			cout << enemy->getName() << " zostal otruty przez: " << this->getName() << " ||| ";
+			//cout << enemy->getName() << " zostal otruty przez: " << this->getName() << " ||| ";
 
 			//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
 			if (Human* human = dynamic_cast<Human*>(enemy)) {

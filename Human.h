@@ -8,6 +8,7 @@ public:
 	~Human();
 	void move() override;
 	void control();
+	void createChild(int xxx, int yyy) override;
 
 };
 
