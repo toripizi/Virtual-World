@@ -5,6 +5,7 @@
 class Animal :public Organism
 {
 	int duplicate();
+	bool baby = true;
 
 protected:
 	void checkFieldToChild(int newX, int newY);
@@ -19,6 +20,12 @@ protected:
 	void move() override;
 	void checkField(int newX, int newY) override;
 	
+	const bool getBaby() {
+		return baby;
+	}
+	void setBaby(bool f) {
+		baby = f;
+	}
 
 public:
 

@@ -231,7 +231,7 @@ public:
 							world.tab[animal->getX()][animal->getY()].setSign(' ');
 							//cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
 							//cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
-							delete animal;
+							delete human;
 						}
 						else {
 							human->conflict(this);

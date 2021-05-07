@@ -30,4 +30,4 @@ public:
 	void setGameOver();
 	const bool getGameOver();
 };
-inline World world(20, 20);
+inline World world(40, 100);

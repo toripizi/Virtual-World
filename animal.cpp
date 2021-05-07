@@ -21,20 +21,25 @@ void Animal::checkField(int newX, int newY) {
 }
 
 void Animal::move() {
-	numberOfAvailableFields = 0;
-	checkField(x - 1, y);
-	checkField(x - 1, y + 1);
-	checkField(x, y + 1);
-	checkField(x + 1, y + 1);
-	checkField(x + 1, y);
-	checkField(x + 1, y - 1);
-	checkField(x, y - 1);
-	checkField(x - 1, y - 1);
-	
-	if (numberOfAvailableFields) {
-		int random = rand() % numberOfAvailableFields;
-		xX = tab[0][random];
-		yY = tab[1][random];
+	if (!this->getBaby()) {
+		numberOfAvailableFields = 0;
+		checkField(x - 1, y);
+		checkField(x - 1, y + 1);
+		checkField(x, y + 1);
+		checkField(x + 1, y + 1);
+		checkField(x + 1, y);
+		checkField(x + 1, y - 1);
+		checkField(x, y - 1);
+		checkField(x - 1, y - 1);
+
+		if (numberOfAvailableFields) {
+			int random = rand() % numberOfAvailableFields;
+			xX = tab[0][random];
+			yY = tab[1][random];
+		}
+	}
+	else {
+		this->setBaby(false);
 	}
 }
 

@@ -3,9 +3,10 @@
 
 class Human :public Animal
 {
-	bool immortality = false;
+	bool immortality = true;
 	int numberOfTurns = 0;
 	void skill1();
+	bool baby = false;
 public:
 	Human();
 	~Human();

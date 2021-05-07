@@ -270,36 +270,41 @@ public:
 		}
 	}
 	void move() {
-		numberOfAvailableFields = 0;
-		checkField(x - 2, y - 2);
-		checkField(x - 2, y - 1);
-		checkField(x - 2, y);
-		checkField(x - 2, y + 1);
-		checkField(x - 2, y + 2);
-		checkField(x - 1, y + 2);
-		checkField(x , y + 2);
-		checkField(x + 1, y + 2);
-		checkField(x + 2, y + 2);
-		checkField(x + 2, y + 1);
-		checkField(x + 2, y);
-		checkField(x + 2, y - 1);
-		checkField(x + 2, y - 2);
-		checkField(x + 1, y - 2);
-		checkField(x, y - 2);
-		checkField(x - 1, y - 2);
-		checkField(x - 1, y);
-		checkField(x - 1, y + 1);
-		checkField(x, y + 1);
-		checkField(x + 1, y + 1);
-		checkField(x + 1, y);
-		checkField(x + 1, y - 1);
-		checkField(x, y - 1);
-		checkField(x - 1, y - 1);
+		if (!this->getBaby()) {
+			numberOfAvailableFields = 0;
+			checkField(x - 2, y - 2);
+			checkField(x - 2, y - 1);
+			checkField(x - 2, y);
+			checkField(x - 2, y + 1);
+			checkField(x - 2, y + 2);
+			checkField(x - 1, y + 2);
+			checkField(x, y + 2);
+			checkField(x + 1, y + 2);
+			checkField(x + 2, y + 2);
+			checkField(x + 2, y + 1);
+			checkField(x + 2, y);
+			checkField(x + 2, y - 1);
+			checkField(x + 2, y - 2);
+			checkField(x + 1, y - 2);
+			checkField(x, y - 2);
+			checkField(x - 1, y - 2);
+			checkField(x - 1, y);
+			checkField(x - 1, y + 1);
+			checkField(x, y + 1);
+			checkField(x + 1, y + 1);
+			checkField(x + 1, y);
+			checkField(x + 1, y - 1);
+			checkField(x, y - 1);
+			checkField(x - 1, y - 1);
 
-		if (numberOfAvailableFields) {
-			int random = rand() % numberOfAvailableFields;
-			xX = tab[0][random];
-			yY = tab[1][random];
+			if (numberOfAvailableFields) {
+				int random = rand() % numberOfAvailableFields;
+				xX = tab[0][random];
+				yY = tab[1][random];
+			}
+		}
+		else {
+			this->setBaby(false);
 		}
 	}
 	void conflict(Organism* enemy) {
