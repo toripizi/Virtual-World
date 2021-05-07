@@ -26,11 +26,13 @@ void goToxy(int x, int y)
 int main()
 {
 	srand((unsigned)time(NULL));
+	//World::setWorld();
 
 	Human* human = new Human;
-
 	cout << "SILA: " << human->getStrength() << endl;
+	cout << "niesmiertelnosc: " << human->getImmortality() << endl;
 	world.drawWorld();
+
 	
 	while (!world.getGameOver()) {
 		if (_kbhit())
@@ -42,7 +44,8 @@ int main()
 			goToxy(0, 0);
 			
 			cout << "SILA: " << human->getStrength() << endl;
-			
+			cout << "niesmiertelnosc: " << human->getImmortality() << endl;
+
 			world.drawWorld();
 		}
 		if (world.getGameOver()) {

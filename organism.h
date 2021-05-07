@@ -1,7 +1,4 @@
 #pragma once
-//#include "world.h"
-//#include "plant.h"
-//#include "animal.h"
 #include <iostream>
 
 class Organism

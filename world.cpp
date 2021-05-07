@@ -3,17 +3,18 @@
 #include "animals.cpp"
 #include "Plants.cpp"
 
+
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfBarszcz = 10;
+	const int numberOfBarszcz = 1;
 	const int numberOfWilczeJagody = 10;
-	const int numberOfGuarana = 20;
-	const int numberOfMlecz = 20;
-	const int numberOfTrawa = 20;
-	const int numberOfOwca = 20;
-	const int numberOfLis = 20;
-	const int numberOfWilk = 20;
-	const int numberOfZolw = 100;
-	const int numberOfAntylopa = 20;
+	const int numberOfGuarana = 1;
+	const int numberOfMlecz = 1;
+	const int numberOfTrawa = 1;
+	const int numberOfOwca = 1;
+	const int numberOfLis = 1;
+	const int numberOfWilk = 10;
+	const int numberOfZolw = 1;
+	const int numberOfAntylopa = 1;
 
 	tab = new Square * [W];
 	for (int i = 0; i < W; i++) {

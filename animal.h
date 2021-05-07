@@ -4,13 +4,15 @@
 
 class Animal :public Organism
 {
-	void checkFieldToChild(int newX, int newY);
 	int duplicate();
 
 protected:
+	void checkFieldToChild(int newX, int newY);
+
+	//World* w = World::wo;
 	int numberOfAvailableFields = 0;
 	World* World = &world;
-	//Animal();
+ 	//Animal();
 	void action() override;
 	void conflict(Organism* enemy) override;
 	void display() override;

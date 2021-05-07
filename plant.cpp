@@ -17,21 +17,45 @@ void Plant::conflict(Organism* enemy) {
 			delete this;
 		}
 		else {
-			//zwierze zosta³o otrute
-			//wiêc ustawiam jego polna na puste
-			world.tab[enemy->getX()][enemy->getY()].setSign(' ');
-			world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
+			if (Human* human = dynamic_cast<Human*>(animal)) {
+				if (!human->getImmortality()) {
+					//zwierze zosta³o otrute
+					//wiêc ustawiam jego polna na puste
+					world.tab[enemy->getX()][enemy->getY()].setSign(' ');
+					world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
 
-			//komunikat
-			//cout << enemy->getName() << " zostal otruty przez: " << this->getName() << " ||| ";
+					//komunikat
+					//cout << enemy->getName() << " zostal otruty przez: " << this->getName() << " ||| ";
 
-			//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
-			if (Human* human = dynamic_cast<Human*>(enemy)) {
-				world.setGameOver();
+					//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
+					if (Human* human = dynamic_cast<Human*>(enemy)) {
+						world.setGameOver();
+					}
+
+					//usuwam atakuj¹cego
+					delete animal;
+				}
+				else {
+					human->conflict(this);
+				}
 			}
+			else {
+				//zwierze zosta³o otrute
+				//wiêc ustawiam jego polna na puste
+				world.tab[enemy->getX()][enemy->getY()].setSign(' ');
+				world.tab[enemy->getX()][enemy->getY()].organism = nullptr;
 
-			//usuwam atakuj¹cego
-			delete animal;
+				//komunikat
+				//cout << enemy->getName() << " zostal otruty przez: " << this->getName() << " ||| ";
+
+				//jeœli atakuj¹cym jest cz³owiek, koñczymy gre
+				if (Human* human = dynamic_cast<Human*>(enemy)) {
+					world.setGameOver();
+				}
+
+				//usuwam atakuj¹cego
+				delete animal;
+			}
 		}
 	}
 }

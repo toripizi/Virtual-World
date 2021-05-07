@@ -225,14 +225,25 @@ public:
 				if (Animal* animal = dynamic_cast<Animal*>(world.tab[newX][newY].organism)) {
 					//jeœli tak, to umiera
 					if (Human* human = dynamic_cast<Human*>(animal)) {
-						world.setGameOver();
+						if (!human->getImmortality()) {
+							world.setGameOver();
+							world.tab[animal->getX()][animal->getY()].organism = nullptr;
+							world.tab[animal->getX()][animal->getY()].setSign(' ');
+							//cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
+							//cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
+							delete animal;
+						}
+						else {
+							human->conflict(this);
+						}
 					}
-					world.tab[animal->getX()][animal->getY()].organism = nullptr;
-					world.tab[animal->getX()][animal->getY()].setSign(' ');
-					//cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
-					//cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
-
-					delete animal;
+					else {
+						world.tab[animal->getX()][animal->getY()].organism = nullptr;
+						world.tab[animal->getX()][animal->getY()].setSign(' ');
+						//cout << "Barszcz Sosnowskiego zostal zjedzony przez: ";
+						//cout << animal->getName() << ", co skutkuje natychmiastowa smiercia :O" << " ||| ";
+						delete animal;
+					}
 				}
 			}
 		}

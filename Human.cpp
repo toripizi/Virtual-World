@@ -1,5 +1,5 @@
 #include "Human.h"
-#include <conio.h>
+#include <conio.h> // _getch()
 
 Human::Human() {
 	do {
@@ -12,7 +12,7 @@ Human::Human() {
 
 	name = "human";
 	sign = 'C';
-	strength = 50000;
+	strength = 5;
 	activity = 4;
 	color = 4;
 
@@ -55,9 +55,27 @@ void Human::control() {
 	//ESC
 	case 122:
 		world.nextTurn();
+		if (numberOfTurns) {
+			numberOfTurns--;
+			if (numberOfTurns == 5) immortality = false;
+		}
 		break;
 	case 27: //klawisze specjalne
 		world.setGameOver();
 		break;
+	case 48://0 //umiejetnosci czlowieka
+		this->skill1();
+		break;
 	}
+}
+
+void Human::skill1() {
+	if (!numberOfTurns) {
+		immortality = true;
+		numberOfTurns = 10;
+	}
+}
+
+int Human::getImmortality() {
+	return immortality;
 }

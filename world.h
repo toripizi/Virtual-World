@@ -11,11 +11,16 @@ class World
 	int width = 20;
 	bool gameOver = false;
 public:
+	//static World* wo;
+	
 	Square** tab;
 	List organisms;
 
 	World(int H, int W);
 	
+	/*static void setWorld() {
+		wo = new World(20, 20);
+	}*/
 	//~World();
 	int getHeight();
 	int getWidth();
@@ -25,4 +30,4 @@ public:
 	void setGameOver();
 	const bool getGameOver();
 };
-inline World world(40, 100);
+inline World world(20, 20);
