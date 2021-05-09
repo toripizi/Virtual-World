@@ -46,4 +46,4 @@ public:
 	void init();
 	void initTab();
 };
-inline World world(40, 100);
+inline World world(10, 10);

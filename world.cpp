@@ -20,65 +20,55 @@ World::~World() {
 }
 
 void World::init() {
-	const int numberOfBarszcz = 1;
-	const int numberOfWilczeJagody = 1;
-	const int numberOfGuarana = 200;
-	const int numberOfMlecz = 1;
-	const int numberOfTrawa = 1;
-	const int numberOfOwca = 1;
-	const int numberOfLis = 1;
-	const int numberOfWilk = 9;
-	const int numberOfZolw = 1;
-	const int numberOfAntylopa = 20;
+	const int numberOfBarszcz = 0;
+	const int numberOfWilczeJagody = 0;
+	const int numberOfGuarana = 0;
+	const int numberOfMlecz = 3;
+	const int numberOfTrawa = 3;
+	const int numberOfOwca = 0;
+	const int numberOfLis = 2;
+	const int numberOfWilk = 0;
+	const int numberOfZolw = 0;
+	const int numberOfAntylopa = 0;
 
-	BarszczSosnowskiego* barszcz[numberOfBarszcz]{};
 	for (int i = 0; i < numberOfBarszcz; i++) {
-		barszcz[i] = new BarszczSosnowskiego;
+		new BarszczSosnowskiego;
 	}
 
-	WilczeJagody* jagody[numberOfWilczeJagody]{};
 	for (int i = 0; i < numberOfWilczeJagody; i++) {
-		jagody[i] = new WilczeJagody;
+		new WilczeJagody;
 	}
 
-	Guarana* guarana[numberOfGuarana]{};
 	for (int i = 0; i < numberOfGuarana; i++) {
-		guarana[i] = new Guarana;
+		new Guarana;
 	}
 
-	Mlecz* mlecz[numberOfMlecz]{};
 	for (int i = 0; i < numberOfMlecz; i++) {
-		mlecz[i] = new Mlecz;
+		new Mlecz;
 	}
 
-	Trawa* trawa[numberOfTrawa]{};
 	for (int i = 0; i < numberOfTrawa; i++) {
-		trawa[i] = new Trawa;
+		new Trawa;
 	}
 
-	Owca* owca[numberOfOwca]{};
 	for (int i = 0; i < numberOfOwca; i++) {
-		owca[i] = new Owca;
+		new Owca;
 	}
 
-	Lis* lis[numberOfLis]{};
 	for (int i = 0; i < numberOfLis; i++) {
-		lis[i] = new Lis;
+		new Lis;
 	}
 
-	Wilk* wilk[numberOfWilk]{};
 	for (int i = 0; i < numberOfWilk; i++) {
-		wilk[i] = new Wilk;
+		new Wilk;
 	}
 
-	Zolw* zolw[numberOfZolw]{};
 	for (int i = 0; i < numberOfZolw; i++) {
-		zolw[i] = new Zolw;
+		new Zolw;
 	}
 
-	Antylopa* antylopa[numberOfAntylopa]{};
 	for (int i = 0; i < numberOfAntylopa; i++) {
-		antylopa[i] = new Antylopa;
+		new Antylopa;
 	}
 }
 
@@ -92,13 +82,6 @@ const int World::getWidth() {
 }
 
 void World::drawWorld() {
-	cout << "C - czlowiek | ";
-	cout << "W - wilk | ";
-	cout << "O - owca | ";
-	cout << "L - lis | ";
-	cout << "Z - zolw | ";
-	cout << "A - antylopa | " << endl;
-
 	for (int i = 0; i < height + 2; i++) {
 		for (int j = 0; j < width + 2; j++) {
 			if(i == 0 || i == height + 1 || j == 0 || j == width + 1) {
@@ -172,36 +155,38 @@ void World::loadWorldFromFile() {
 	ifs.close();
 }
 void World::writeWorldToFile() {
-	vector<File> vec{};
-	ofstream save1("saves.txt", ios::binary | std::ios::trunc);
-	if (save1.is_open()) {
-		save1.write((char*)&this->width, sizeof(int));
-		save1.write((char*)&this->height, sizeof(int));
-		save1.close();
-	}
-	
+	//otwieram plik
+	ofstream save("saves.txt", ios::binary | std::ios::trunc);
+	if (save.is_open()) {
+		//zapisuje szerokosc i wysokosc
+		save.write((char*)&this->width, sizeof(int));
+		save.write((char*)&this->height, sizeof(int));
 
-	ofstream save("saves.txt", ios::binary | ios::app);
+		//tworze strukture tymczasow¹ File
+		File* file = new File;
+		Node* temporary = world.organisms.first;
+		vector<File> vec{};
 
-	File* file = new File;
-
-	Node* temporary = world.organisms.first;
-	
-	file->x = temporary->getOrganism()->getX();
-	file->y = temporary->getOrganism()->getY();
-	file->name = temporary->getOrganism()->getName();
-	vec.push_back(*file);
-	while (temporary != world.organisms.last) {
-		temporary = temporary->getNext();
 		file->x = temporary->getOrganism()->getX();
 		file->y = temporary->getOrganism()->getY();
 		file->name = temporary->getOrganism()->getName();
 		vec.push_back(*file);
+		//wpycham struktore do vektora
+
+		while (temporary != world.organisms.last) {
+			temporary = temporary->getNext();
+			file->x = temporary->getOrganism()->getX();
+			file->y = temporary->getOrganism()->getY();
+			file->name = temporary->getOrganism()->getName();
+			vec.push_back(*file);
+			//wpycham struktore do vektora
+		}
+		int size = vec.size() * sizeof(File);
+		save.write((char*)vec.data(), size);
+		save.close();
+		delete file;
 	}
-	int size = vec.size() * sizeof(File);
-	save.write((char*)vec.data(), size);
-	delete file;
-	save.close();
+	
 }
 
 const int World::getHumanX() {

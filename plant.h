@@ -14,6 +14,7 @@ protected:
 	void display() override {};
 	void move() override; 
 	void checkField(int newX, int newY) override;
+	virtual void action() = 0;
 
 public:
 	int tab[2][8]{};

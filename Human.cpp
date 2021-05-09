@@ -54,7 +54,11 @@ void Human::control() {
 		{
 		case 80: //strza³ka w dol
 			xX = x;
-			yY = y + distance;
+			yY = y + distance; 
+			//standardowo distance = 1; 
+			//jeœli jest w³¹czona specjalna umiejêtnoœæ, distance = 2
+			//xX -> potencjalny x;
+			//yY -> potencjalny y;
 			break;
 		case 72: //strza³ka w gore
 			xX = x;
@@ -71,7 +75,7 @@ void Human::control() {
 		}
 		break;
 	//ESC
-	case 122:
+	case 122:// 'z'
 		world.nextTurn();
 		if (numberOfTurns) {
 			numberOfTurns--;
@@ -85,7 +89,7 @@ void Human::control() {
 			}
 		}
 		break;
-	case 27: //klawisze specjalne
+	case 27:
 		world.setGameOver();
 		break;
 	case 48://0 //umiejetnosci czlowieka, niesmiertelnosc 

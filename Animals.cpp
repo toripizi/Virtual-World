@@ -40,7 +40,7 @@ public:
 		World->organisms.PUSH(this);
 	}
 	void createChild(int newX, int newY) override {
-		Wilk* childW = new Wilk(newX, newY);
+		new Wilk(newX, newY);
 	}
 
 };
@@ -85,7 +85,7 @@ public:
 		World->organisms.PUSH(this);
 	}
 	void createChild(int newX, int newY) override {
-		Owca* childO = new Owca(newX, newY);
+		new Owca(newX, newY);
 	}
 
 };
@@ -151,7 +151,7 @@ public:
 		}
 	}
 	void createChild(int newX, int newY) override {
-		Lis* childL = new Lis(newX, newY);
+		new Lis(newX, newY);
 	}
 };
 class Zolw : public Animal {
@@ -201,7 +201,7 @@ public:
 		}
 	}
 	void createChild(int newX, int newY) override {
-		Zolw* childZ = new Zolw(newX, newY);
+		new Zolw(newX, newY);
 	}
 };
 class Antylopa : public Animal {
@@ -340,6 +340,6 @@ public:
 		}
 	}
 	void createChild(int newX, int newY) override{
-		Antylopa* childA = new Antylopa(newX, newY);
+		new Antylopa(newX, newY);
 	}
 };

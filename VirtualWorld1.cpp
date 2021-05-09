@@ -42,6 +42,8 @@ void report() {
 	cout << " || 0 - niesmiertelnosc, 2 - szybkosc antylopy " << endl;
 	cout << "Jesli chcesz zapisac stan gry wcisnij 'x'"<<endl;
 	cout << "liczba organizmow: " << world.organisms.size() << endl;
+	cout << "C - czlowiek | W - wilk | O - owca | L - lis | Z - zolw | A - antylopa | ";
+	cout << " T - trawa | M - mlecz | G - guarana | J - wilcze jagody | B - barszcz sosnowskiego" << endl;
 }
 
 void menu() {

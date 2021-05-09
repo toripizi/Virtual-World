@@ -95,10 +95,14 @@ void Animal::conflict(Organism* enemy) {
 	if (Animal* animal = dynamic_cast<Animal*>(enemy)) {
 		if (enemy->getName() == this->getName()) {
 			//rozmna¿anie 
+			//duplicate() sprawdza czy s¹ gdzies wolne miejsca
 			int numberOfAvailableFieldsThis = this->duplicate();
 			int numberOfAvailableFieldsAnimal = animal->duplicate();
 			int razem = numberOfAvailableFieldsThis + numberOfAvailableFieldsAnimal;
+			//sumuje wszytskie wolne miejsca
 			if (razem) {
+				//jeœli istniej¹
+				//losuje jedno z nich
 				int random = rand() % razem;
 				//sprawdzam czy wylosowana liczba miesci sie w zakresie dostepnych pól dla this
 				if (random < numberOfAvailableFieldsThis) {
@@ -107,10 +111,14 @@ void Animal::conflict(Organism* enemy) {
 				else {
 					// jesli nie 
 					//to dziecko rodzi sie na polu dostepnemu dla animal
-					animal->createChild(animal->tab[0][random-numberOfAvailableFieldsThis], animal->tab[1][random-numberOfAvailableFieldsThis]);
+					animal->createChild(
+						animal->tab[0][random-numberOfAvailableFieldsThis],
+						animal->tab[1][random-numberOfAvailableFieldsThis]);
+					//createChild(int x, int y)
+					//tworzy nowe zwierze
+					//metoda ta jest zadeklarowna w ka¿dym zwierzêciu osobno
 				}
 			}
-
 		}
 		else if (enemy->getStrength() >= this->strength) {
 			//atakuj¹cy wygrywa

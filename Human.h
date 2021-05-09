@@ -3,7 +3,7 @@
 
 class Human :public Animal
 {
-	bool immortality = true;
+	bool immortality = false;
 	int numberOfTurns = 0;
 	void skill1();
 	void skill2();

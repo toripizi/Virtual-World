@@ -39,7 +39,7 @@ public:
 
 		world.organisms.PUSH(this);
 	}
-	void action() {
+	void action() override {
 		if (numberOfAvailableFields && rand() % 12 == 0) {
 			Trawa* tra = new Trawa(xX, yY);
 		}
@@ -82,7 +82,7 @@ public:
 
 		world.organisms.PUSH(this);
 	}
-	void action() {
+	void action() override {
 		if (numberOfAvailableFields && rand() % 4 == 0) {
 			Mlecz* mle = new Mlecz(xX, yY);
 		}
@@ -124,7 +124,7 @@ public:
 
 		world.organisms.PUSH(this);
 	}
-	void action() {
+	void action() override {
 		if (numberOfAvailableFields && rand() % 12 == 0) {
 			Guarana* gua = new Guarana(xX, yY);
 		}
@@ -171,7 +171,7 @@ public:
 
 		world.organisms.PUSH(this);
 	}
-	void action() {
+	void action() override {
 		if (numberOfAvailableFields && rand() % 12 == 0) {
 			WilczeJagody* jagody = new WilczeJagody(xX, yY);
 		}
@@ -248,7 +248,7 @@ public:
 			}
 		}
 	}
-	void action() {
+	void action() override {
 		// sprawdzam czy na polach obok s¹ jakieœ zwierzêta
 		checkField2(x - 1, y);
 		checkField2(x - 1, y + 1);
