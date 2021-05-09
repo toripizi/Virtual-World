@@ -188,7 +188,7 @@ public:
 		x = xX;
 		y = yY;
 
-		name = "barszcz sosnowskiego";
+		name = "barszcz";
 		sign = 'B';
 		strength = 10;
 		activity = 0;
@@ -203,7 +203,7 @@ public:
 		this->setX(X);
 		this->setY(Y);
 
-		name = "barszcz sosnowskiego";
+		name = "barszcz";
 		sign = 'B';
 		strength = 10;
 		activity = 0;

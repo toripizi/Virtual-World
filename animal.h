@@ -13,7 +13,6 @@ protected:
 	//World* w = World::wo;
 	int numberOfAvailableFields = 0;
 	World* World = &world;
- 	//Animal();
 	void action() override;
 	void conflict(Organism* enemy) override;
 	void display() override;
@@ -31,7 +30,6 @@ public:
 
 	virtual void createChild(int xxx, int yyy) = 0;
 
-	// tab[][12] a nie tab[][8], bo przy rozmna¿aniu mo¿liwa jest wiêksza liczba miejsc 
 	int tab[2][8]{};
 
 	~Animal();

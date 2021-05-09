@@ -69,4 +69,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="saves.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Xsd>
+  </ItemGroup>
 </Project>

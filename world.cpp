@@ -1,26 +1,36 @@
-#include "world.h"
-#include "animal.h"
 #include "animals.cpp"
 #include "Plants.cpp"
-
+#include <vector>
+#include <string>
 
 World::World(int H, int W) : height(H), width(W) {
-	const int numberOfBarszcz = 2;
-	const int numberOfWilczeJagody = 2;
-	const int numberOfGuarana = 2;
-	const int numberOfMlecz = 2;
-	const int numberOfTrawa = 2;
-	const int numberOfOwca = 20;
-	const int numberOfLis = 20;
-	const int numberOfWilk = 20;
-	const int numberOfZolw = 20;
+	srand((unsigned)time(NULL));
+}
+
+void World::initTab() {
+	tab = new Square * [width];
+	for (int i = 0; i < width; i++) {
+		tab[i] = new Square[height];
+	}
+}
+World::~World() {
+	for (int i = 0; i < width; i++) {
+		delete[] tab[i];
+	}
+}
+
+void World::init() {
+	const int numberOfBarszcz = 1;
+	const int numberOfWilczeJagody = 1;
+	const int numberOfGuarana = 200;
+	const int numberOfMlecz = 1;
+	const int numberOfTrawa = 1;
+	const int numberOfOwca = 1;
+	const int numberOfLis = 1;
+	const int numberOfWilk = 9;
+	const int numberOfZolw = 1;
 	const int numberOfAntylopa = 20;
 
-	tab = new Square * [W];
-	for (int i = 0; i < W; i++) {
-		tab[i] = new Square[H];
-	}
-	
 	BarszczSosnowskiego* barszcz[numberOfBarszcz]{};
 	for (int i = 0; i < numberOfBarszcz; i++) {
 		barszcz[i] = new BarszczSosnowskiego;
@@ -47,7 +57,7 @@ World::World(int H, int W) : height(H), width(W) {
 	}
 
 	Owca* owca[numberOfOwca]{};
-	for(int i = 0; i < numberOfOwca; i++) {
+	for (int i = 0; i < numberOfOwca; i++) {
 		owca[i] = new Owca;
 	}
 
@@ -73,11 +83,11 @@ World::World(int H, int W) : height(H), width(W) {
 }
 
 //World::~World();
-int World::getHeight() {
+const int World::getHeight() {
 	return height;
 }
 
-int World::getWidth() {
+const int World::getWidth() {
 	return width;
 }
 
@@ -114,3 +124,90 @@ const bool World::getGameOver(){
 void World::nextTurn() {
 	world.organisms.MAKE_ACTION();
 }
+
+void World::loadWorldFromFile() {
+	ifstream ifs("saves.txt", ios::binary | ios::in);
+	ifs.read((char*)&width, sizeof(int));
+	ifs.read((char*)&height, sizeof(int));
+
+	world.initTab();
+
+	File* temp = new File;
+	while(ifs.read((char*)temp, sizeof(File))){
+		if (temp->name == "wilk") {
+			new Wilk(temp->x, temp->y);
+		}
+		else if (temp->name == "owca") {
+			new Owca(temp->x, temp->y);
+		}
+		else if (temp->name == "lis") {
+			new Lis(temp->x, temp->y);
+		}
+		else if (temp->name == "zolw") {
+			new Zolw(temp->x, temp->y);
+		}
+		else if (temp->name == "antylopa") {
+			new Antylopa(temp->x, temp->y);
+		}
+		else if (temp->name == "trawa") {
+			new Trawa(temp->x, temp->y);
+		}
+		else if (temp->name == "mlecz") {
+			new Mlecz(temp->x, temp->y);
+		}
+		else if (temp->name == "guarana") {
+			new Guarana(temp->x, temp->y);
+		}
+		else if (temp->name == "wilcze jagody") {
+			new WilczeJagody(temp->x, temp->y);
+		}
+		else if (temp->name == "barszcz") {
+			new BarszczSosnowskiego(temp->x, temp->y);
+		}
+		else if (temp->name == "human") {
+			humanX = temp->x;
+			humanY = temp->y;
+		}
+	}
+	ifs.close();
+}
+void World::writeWorldToFile() {
+	vector<File> vec{};
+	ofstream save1("saves.txt", ios::binary | std::ios::trunc);
+	if (save1.is_open()) {
+		save1.write((char*)&this->width, sizeof(int));
+		save1.write((char*)&this->height, sizeof(int));
+		save1.close();
+	}
+	
+
+	ofstream save("saves.txt", ios::binary | ios::app);
+
+	File* file = new File;
+
+	Node* temporary = world.organisms.first;
+	
+	file->x = temporary->getOrganism()->getX();
+	file->y = temporary->getOrganism()->getY();
+	file->name = temporary->getOrganism()->getName();
+	vec.push_back(*file);
+	while (temporary != world.organisms.last) {
+		temporary = temporary->getNext();
+		file->x = temporary->getOrganism()->getX();
+		file->y = temporary->getOrganism()->getY();
+		file->name = temporary->getOrganism()->getName();
+		vec.push_back(*file);
+	}
+	int size = vec.size() * sizeof(File);
+	save.write((char*)vec.data(), size);
+	delete file;
+	save.close();
+}
+
+const int World::getHumanX() {
+	return humanX;
+}
+const int World::getHumanY() {
+	return humanY;
+}
+
